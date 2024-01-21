@@ -1,0 +1,30 @@
+.button{
+  width: 8.5vw;
+  height: 5vh;
+  padding: 0.2rem;
+  border: none;
+  border-radius: 6px;
+  color: #000000;
+  font-weight: bold;
+  opacity: 0.95;
+}
+.button:hover{
+  cursor: pointer;
+  opacity: 1;
+  border: 1px solid white;
+}
+
+.new-task{
+  background-color: rgb(67, 176, 67);
+}
+
+.clear-task{
+  background-color: rgb(195, 98, 98);
+}
+
+.save-draft{
+  width: 10vw;
+  background-color: rgb(202, 204, 48);
+
+}
+

@@ -1,0 +1,63 @@
+<form [formGroup]="addTaskForm" (ngSubmit)="sendAsNewDraft" class="form__container">
+
+  <section class="form__input-box">
+    <label for="" class="form__label">Nome da Tarefa: {{taskReturned?.name}}</label>
+    <input formControlName="title" type="text" class="form__input--text"/>
+  </section>
+
+  <section class="form__input-box">
+    <label for="" class="form__label">Descrição da Tarefa:</label>
+    <textarea formControlName="description" type="text" class="form__input--text-area">
+    </textarea>
+  </section>
+
+  <section *ngIf="containDateForm" class="form__input-box--horizontal">
+
+    <div class="input-data-box">
+      <label for="date" class="form__label">Data:</label>
+      <input
+        formControlName="date"
+        type="date"
+        name="date"
+        id="date"
+        class="form__input--date"
+      />
+    </div>
+
+    <div class="input-data-box">
+      <label for="time" class="form__label">Hora:</label>
+      <input
+        formControlName="time"
+        type="time"
+        name="time"
+        class="form__input--time"
+      />
+    </div>
+  </section>
+
+  <section class="form__actions">
+
+    <app-button
+      [buttonFunction]="sendAsNewDraft.bind(this)"
+      [buttonName]="'Nova Tarefa'"
+      [buttonType]='buttonType("new-task")'
+    ></app-button>
+    <app-button
+      [buttonFunction]="clearForm.bind(this)"
+      [buttonName]="'Limpar Campos'"
+      [buttonType]='buttonType("clear-task")'
+    ></app-button>
+    <app-button
+      [buttonFunction]="saveAsDraft.bind(this)"
+      [buttonName]="'Rascunho'"
+      [buttonType]='buttonType("save-draft")'
+    ></app-button>
+  </section>
+  <div *ngIf="modalIson" class="form_dialog_modal">
+    <h3>Limpar campos?</h3>
+    <div>
+      <button class="form_dialog_modal--button">Sim</button>
+      <button class="form_dialog_modal--button">Voltar</button>
+    </div>
+  </div>
+</form>
