@@ -5,6 +5,7 @@ import { NotesModule } from './pages/notes/notes.module';
 import { FormModule } from './components/form/form.module';
 import { ButtonModule } from './components/button/button.module';
 import { TaskModule } from './pages/task/task.module';
+import { TaskCardModule } from './components/task-card/task-card.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { TaskModule } from './pages/task/task.module';
     NotesModule,
     FormModule,
     ButtonModule,
+    TaskCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
