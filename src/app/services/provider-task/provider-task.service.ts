@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Task } from './models/task.model';
+import Task  from './models/task.model';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProviderTaskService {
+  private taskListSubject = new BehaviorSubject<Task[]>([
+    // initial tasks...
+  ]);
+  get provideTasks() {
+    return this.taskListSubject.asObservable();
+  }
   taskList: Task[] = [{
     id: 1,
     name: 'sasd',
@@ -17,13 +24,8 @@ export class ProviderTaskService {
   draftsList: Task[] = [];
 
   updateTaskList(newTask: Task) {
-    this.taskList.push(newTask);
-    console.log('Isolated task list:', this.taskList);
-
-  }
-
-  provideTasks(){
-    return this.taskList.map(e=> e);
+    this.taskListSubject.next([...this.taskListSubject.value, newTask]);
+    console.log('Isolated task list:', this.taskListSubject.value);
   }
 
   updateDraftList(newTask: Task) {

@@ -1,4 +1,4 @@
-<form [formGroup]="addTaskForm" (ngSubmit)="sendAsNewDraft" class="form__container">
+<form [formGroup]="addTaskForm" (ngSubmit)="sendFormData" class="form__container">
 
   <section class="form__input-box">
     <label for="" class="form__label">Nome da Tarefa: {{taskReturned?.name}}</label>
@@ -38,12 +38,12 @@
   <section class="form__actions">
 
     <app-button
-      [buttonFunction]="sendAsNewDraft.bind(this)"
+      [buttonFunction]="sendFormData.bind(this)"
       [buttonName]="'Nova Tarefa'"
       [buttonType]='buttonType("new-task")'
     ></app-button>
     <app-button
-      [buttonFunction]="clearForm.bind(this)"
+      [buttonFunction]="showClearFormDialog.bind(this)"
       [buttonName]="'Limpar Campos'"
       [buttonType]='buttonType("clear-task")'
     ></app-button>
@@ -56,8 +56,8 @@
   <div *ngIf="modalIson" class="form_dialog_modal">
     <h3>Limpar campos?</h3>
     <div>
-      <button class="form_dialog_modal--button">Sim</button>
-      <button class="form_dialog_modal--button">Voltar</button>
+      <button class="form_dialog_modal--button" (click)="clearForm()">Sim</button>
+      <button class="form_dialog_modal--button" (click)="showClearFormDialog()">Voltar</button>
     </div>
   </div>
 </form>

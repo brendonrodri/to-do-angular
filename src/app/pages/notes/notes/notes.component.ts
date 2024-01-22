@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { ProviderTaskService } from 'src/app/services/provider-task/provider-task.service';
-import { Task } from 'src/app/services/provider-task/models/task.model';
+import Task from 'src/app/services/provider-task/models/task.model';
 
 @Component({
   selector: 'app-notes',

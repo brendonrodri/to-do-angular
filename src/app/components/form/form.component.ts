@@ -3,20 +3,17 @@ import { Component, Input } from '@angular/core';
 import { EButtonType } from '../button/button.enum';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToDoService } from 'src/app/services/todo-service/todo-services.service';
-import { ProviderTaskService } from 'src/app/services/provider-task/provider-task.service';
-import { Task } from 'src/app/services/provider-task/models/task.model';
-
+import Task from 'src/app/services/provider-task/models/task.model';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-
-  constructor(private UtilsService: UtilsService, private toDoService: ToDoService, private providerTasks: ProviderTaskService){
-    console.log(this.tasks);
+  @Input() containDateForm: boolean = true;
+  constructor(private UtilsService: UtilsService, private toDoService: ToDoService){
   }
-  isDraft: boolean = false;
+
   tasks: Task[] = [];
   addTaskForm = new FormGroup({
     title: new FormControl('', ),
@@ -24,9 +21,9 @@ export class FormComponent {
     date: new FormControl('', ),
     time: new FormControl('', ),
   });
+  isDraft: boolean = false;
   modalIson: boolean = false;
-
-  @Input() containDateForm: boolean = true;
+  clearTask: boolean = false;
 
   public get title() {
     return  this.addTaskForm.get('title')?.value?.toString();
@@ -57,22 +54,20 @@ export class FormComponent {
     )
   }
 
-  sendAsNewDraft():void{
-    this.sendFormData()
-    this.tasks = this.providerTasks.provideTasks();
-    console.log(this.tasks);
-  }
   saveAsDraft():void{
     this.isDraft = true;
     this.sendFormData();
   }
 
-  clearForm():void{
-    this.modalIson = true;
-    if(this.modalIson != true){
-      this.addTaskForm.reset();
-    }
+  showClearFormDialog():void{
+    this.modalIson == false ? this.modalIson = true:this.modalIson = false;
   }
+
+  clearForm(): boolean{
+    this.addTaskForm.reset();
+    return this.modalIson = false;
+  }
+
   buttonType(type: String): EButtonType{
     return this.UtilsService.buttonType(type);
   }

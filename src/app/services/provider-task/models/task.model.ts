@@ -1,4 +1,4 @@
-export interface Task {
+ interface Task {
   id?: number;
   name?: string;
   description?: string;
@@ -7,3 +7,4 @@ export interface Task {
   done?: boolean;
   draft?: boolean;
 }
+export default Task;
