@@ -1,18 +1,38 @@
-  <section class="task">
-  <div class="task_card_color"></div>
-  <div class="task_content">
-    <div class="task_box_label flex-row">
-      <h3 class="task_label">Tarefa: <span>Nome</span></h3>
+<section style="display: flex;">
+  <section class="task" [ngClass]="[cardIsOpen === false ? 'task_closed' : '']">
+    <div class="task_card_header">
+      <div class="dot_container" (click)="openMenu()">
+        <div class="card_dot" style="background-color: #008000;"></div>
+        <div class="card_dot" style="background-color: orange;"></div>
+        <div class="card_dot" style="background-color: red;"></div>
+      </div>
+      <section class="task_card_header--section">
+        <div class="icon_container">
+        <span class="material-symbols-outlined" >
+          check
+        </span>
+      </div>
+        <!-- <app-options-modal *ngIf="menuIsOpen" [isOpen]="menuIsOpen"></app-options-modal> -->
+      </section>
     </div>
-    <div class="task_box_label ">
-      <h3 class="task_label">Descrição da Tarefa:</h3>
-      <p class="task_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, cum fuga temporibus cupiditate in esse </p>
+    <div class="task_content" [ngClass]="[cardIsOpen === false ? 'task_box_label_top' : '']">
+      <div *ngIf="task" (click)="openCard()"  class="task_box_label flex-row">
+        <h3 class="task_label">Tarefa: <span>{{task.name}}</span></h3>
+      </div>
+      <div *ngIf="cardIsOpen && task" class="task_box_label ">
+        <h3 class="task_label">Descrição da Tarefa:</h3>
+        <p class="task_text">
+          {{task.description}}
+        </p>
+      </div>
+      <div *ngIf="cardIsOpen && task"  class="task_box_label flex-row">
+        <h3 class="task_label">Data:</h3>
+        <span class="task_date_time">{{task.date}}</span>
+        <h3 class="task_label">Hora:</h3>
+        <span class="task_date_time">{{task.time}}</span>
+      </div>
     </div>
-    <div class="task_box_label flex-row">
-      <h3 class="task_label">Data:</h3>
-      <span class="task_date_time">20/20/20</span>
-      <h3 class="task_label">Hora:</h3>
-      <span class="task_date_time">10:30</span>
-    </div>
-  </div>
+  </section>
+
+
 </section>

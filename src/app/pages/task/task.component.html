@@ -1,4 +1,7 @@
-<app-form> </app-form>
-<section class="task_container">
+<section class="task_page_container">
+  <app-form> </app-form>
+  <section class="task_list_container">
+    <app-task-card *ngFor="let task of taskList" [task]="task"></app-task-card>
+  </section>
 
 </section>

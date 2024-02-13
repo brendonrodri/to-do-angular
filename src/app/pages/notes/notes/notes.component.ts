@@ -13,7 +13,7 @@ export class NotesComponent implements OnChanges {
 
   taskList: Task[] = [];
   getTask(){
-    this.taskList = this.providerTask.taskList;
+    this.taskList = this.providerTask.draftsList;
   }
   ngOnChanges(): void {
     this.getTask()

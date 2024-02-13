@@ -1,12 +1,23 @@
 
-.task_container{
-  background-color: blue;
-  width: 50vw;
-  height: 50vh;
+.task_page_container{
+  width: 100%;
+  height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin: 0 auto;
+}
+.task_list_container{
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  align-content: start;
+  overflow-y: auto;
+  background-color: #adeada;
+  border-left: 1px solid gray;
+}
+.task_list_container::-webkit-scrollbar{
+  width: 0;
 }
 
 

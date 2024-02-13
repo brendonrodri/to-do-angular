@@ -1,0 +1,6 @@
+{
+  "locale": "en-US",
+  "translations": {
+    "taskname": "Task name: {$INTERPOLATION}"
+  }
+}

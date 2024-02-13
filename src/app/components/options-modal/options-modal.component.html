@@ -1,0 +1,25 @@
+<div class="modal" [ngStyle]="{'display': modalHidden}">
+  <section class="modal_header">
+    <h4>Options</h4>
+    <div class="close-icon">
+      <app-icon-button
+        [iconName]="'close'"
+        [size]="closeButtonConfig"
+        (click)="closeModal()"
+      >
+      </app-icon-button>
+    </div>
+  </section>
+  <hr style="width: 90%; margin: 0 auto;"/>
+  <ul class="menu_list">
+    <li *ngFor="let option of optionsList" class="menu_list--item">
+      <span>{{option.name}}</span>
+      <app-icon-button
+        [iconName]="option.icon!.name"
+        [size]="option.icon!.size"
+        [margin]="option.icon?.name === 'draft' ? 10 : 0"
+        >
+      </app-icon-button>
+    </li>
+  </ul>
+</div>
